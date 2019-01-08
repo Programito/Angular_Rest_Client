@@ -7,6 +7,7 @@ import {formatDate, DatePipe} from '@angular/common';
 
 import { CLIENTES } from './clientes.json';
 import { Cliente } from './cliente';
+import {Region} from './region';
 // throwError convertir error en observable
 import {of, Observable,throwError} from 'rxjs';
 import {HttpClient, HttpHeaders, HttpRequest, HttpEvent} from '@angular/common/http';
@@ -23,6 +24,10 @@ export class ClienteService {
 
   constructor(private http:HttpClient,
               private router: Router) { }
+
+  getRegiones():Observable<Region[]>{
+    return this.http.get<Region[]>(this.urlEndPoint+'/regiones');
+  }
 
   //getClientes(): Observable<Cliente[]>{
     // convertir el listado de clienes en un observable
